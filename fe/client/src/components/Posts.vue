@@ -48,6 +48,8 @@ export default {
     async deletePost (id) {
       await PostsService.deletePost(id)
       this.$router.push({ name: 'Posts' })
+      const projectIndex = this.posts.findIndex(p => p.id === id)
+      this.posts.splice(projectIndex, 1)
     }
   }
 }
