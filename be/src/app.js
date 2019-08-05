@@ -53,4 +53,48 @@ app.post('/posts', (req, res) => {
     })
 })
 
+// Fetch single post
+app.get('/post/:id', (req, res) => {
+    var db = req.db;
+    Post.findById(req.params.id, 'title description author', function (error, post) {
+      if (error) { console.error(error); }
+      res.send(post)
+    })
+})
+
+// update post
+
+app.put('/posts/:id', (req, res) => {
+    var db = req.db;
+    Post.findById(req.params.id, 'title description', function (error, post) {
+      if (error) { console.error(error); }
+  
+      post.title = req.body.title
+      post.description = req.body.description
+      post.author = req.body.author
+      post.save(function (error) {
+        if (error) {
+          console.log(error)
+        }
+        res.send({
+          success: true
+        })
+      })
+    })
+})
+
+app.delete('/posts/:id', (req, res) => {
+    var db = req.db;
+    Post.remove({
+      _id: req.params.id
+    }, function(err, post){
+      if (err)
+        res.send(err)
+      res.send({
+        success: true
+      })
+    })
+})
+  
+
 app.listen(process.env.PORT || 8081)
