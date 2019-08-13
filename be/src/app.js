@@ -10,6 +10,7 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
+mongoose.set('useCreateIndex', true)
 mongoose.connect('mongodb://localhost:27017/posts');
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
