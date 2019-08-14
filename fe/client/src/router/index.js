@@ -20,6 +20,7 @@ import Hello from '@/components/HelloWorld'
 import Posts from '@/components/Posts'
 import NewPost from '@/components/NewPost'
 import EditPost from '@/components/EditPost'
+import TheNavbar from '@/components/TheNavbar'
 
 Vue.use(Router)
 
@@ -28,8 +29,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'Home',
+      component: TheNavbar
     },
     {
       path: '/posts',

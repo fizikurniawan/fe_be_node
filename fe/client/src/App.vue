@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
+    <TheNavbar />
     <router-view/>
+    <TheFooter />
   </div>
 </template>
 
 <script>
+import TheNavbar from '@/components/TheNavbar'
+import TheFooter from '@/components/TheFooter'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    TheNavbar,
+    TheFooter
+  }
 }
 </script>
 
@@ -18,6 +25,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
